@@ -1,31 +1,7 @@
-import fondo_mobile from '/bg-sidebar-mobile.svg'
-import fondo_desktop from '/bg-sidebar-desktop.svg'
 
-const Step1 = ({dataArray}) => {
-
-  
+const Step1 = ({formData, setFormData, nextStep}) => {
 
   return (
-    <main className='bg-Magnolia  min-h-[90vh] relative sm:flex sm:bg-White sm:justify-center sm:gap-6'>
-      <div className='w-full h-[172px] sm:h-screen sm:p-4 sm:w-auto relative'>
-        <div className='absolute flex gap-4 sm:gap-6 justify-center left-[calc(50%-88px)] top-10 sm:top-24 sm:flex-col'>
-          {
-            dataArray.map((data) => (
-              <div key={data.id} className='sm:flex sm:gap-4 sm:items-center'>
-                <span className='rounded-[50%] border border-White w-8 h-8 flex items-center justify-center text-White'>
-                  {data.id}
-                </span>
-                <div className='hidden sm:block'>
-                  <span className='text-Cool-gray'>{data.name}</span>
-                  <p className='font-bold text-White'>{data.content}</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      <img src={fondo_mobile} alt="bg mobile" className='prueba w-full sm:hidden' />
-      <img src={fondo_desktop} alt='bg desktop' className='hidden sm:block sm:h-full sm:object-cover sm:rounded-2xl'/> 
-      </div> 
       <div className=' sm:flex sm:flex-col sm:justify-around sm:items-baseline'>
       <section className='m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0'>
         <h1 className='font-bold text-2xl text-Marine-blue mb-3'>Personal info</h1>
@@ -50,11 +26,8 @@ const Step1 = ({dataArray}) => {
         </div>
       </section>
       
-        <button className='m-4 bg-Marine-blue p-2 text-White rounded-sm text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-end sm:mr-8'>Next Step</button>
+        <button className='m-4 bg-Marine-blue p-2 text-White rounded-sm text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-end sm:mr-8' onClick={nextStep}>Next Step</button>
       </div>
-      
-      
-    </main>
   );
 };
 

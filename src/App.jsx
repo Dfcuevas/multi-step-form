@@ -1,5 +1,9 @@
+import { useState } from "react";
 import "./App.css";
+import Container from "./components/Container";
 import Step1 from "./components/Step1";
+import StepSumary from "./components/StepSumary";
+import Step2 from "./components/Step2";
 
 const dataArray = [
   {
@@ -25,9 +29,35 @@ const dataArray = [
 ]
 
 function App() {
+  const [step, setStep] = useState(1)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+  })
+
+  const nextStep = () => {
+    setStep(step + 1)
+  }
+
+  const prevStep = () => {
+    setStep(step - 1)
+  }
+
+  console.log(formData)
   return (
     <>
-      <Step1 dataArray={dataArray}/>
+    <Container >
+    <StepSumary dataArray={dataArray} step={step}/>
+   
+     {
+      step === 1 && <Step1 formData={formData} setFormData={setFormData} nextStep={nextStep}/> 
+    }
+    {
+      step === 2 && <Step2 formData={formData} setFormData={setFormData} nextStep={nextStep}/> 
+    } 
+    
+    </Container>
     </>
   );
 }
