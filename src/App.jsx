@@ -4,60 +4,95 @@ import Container from "./components/Container";
 import Step1 from "./components/Step1";
 import StepSumary from "./components/StepSumary";
 import Step2 from "./components/Step2";
+import Step3 from "./components/Step3";
 
 const dataArray = [
   {
     id: 1,
     name: "STEP 1",
-    content: 'YOUR INFO'
+    content: "YOUR INFO",
   },
   {
     id: 2,
     name: "STEP 2",
-    content: 'SELECT PLAN'
+    content: "SELECT PLAN",
   },
   {
     id: 3,
     name: "STEP 3",
-    content: 'ADD-ONS'
+    content: "ADD-ONS",
   },
   {
     id: 4,
     name: "STEP 4",
-    content: 'SUMMARY'
+    content: "SUMMARY",
   },
-]
+];
 
 function App() {
-  const [step, setStep] = useState(1)
+  const [checked, setChecked] = useState(false);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phoneNumber: '',
-  })
+    name: "",
+    email: "",
+    phone: "",
+    plan: {
+      duration: "",
+      planType: ",",
+      price: "",
+    },
+    addons: [],
+  });
 
   const nextStep = () => {
-    setStep(step + 1)
-  }
+    setStep(step + 1);
+  };
 
   const prevStep = () => {
-    setStep(step - 1)
-  }
+    setStep(step - 1);
+  };
 
-  console.log(formData)
+  const handleChange = (event) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  console.log(formData);
+
   return (
     <>
-    <Container >
-    <StepSumary dataArray={dataArray} step={step}/>
-   
-     {
-      step === 1 && <Step1 formData={formData} setFormData={setFormData} nextStep={nextStep}/> 
-    }
-    {
-      step === 2 && <Step2 formData={formData} setFormData={setFormData} nextStep={nextStep}/> 
-    } 
-    
-    </Container>
+      <Container>
+        <StepSumary dataArray={dataArray} step={step} />
+
+        {step === 1 && (
+          <Step1
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            handleChange={handleChange}
+          />
+        )}
+        {step === 2 && (
+          <Step2
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            checked={checked}
+            setChecked={setChecked}
+          />
+        )}
+        {step === 3 && (
+          <Step3
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            formData={formData}
+            checked={checked}
+          />
+        )}
+      </Container>
     </>
   );
 }
