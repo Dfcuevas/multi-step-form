@@ -55,7 +55,7 @@ const Step1 = ({ formData, nextStep, handleChange }) => {
       </section>
 
       <button
-        className="m-4 bg-Marine-blue p-2 text-White rounded-sm text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-end sm:mr-8"
+        className="m-4 bg-Marine-blue p-2 text-White text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 rounded-md sm:self-end sm:mr-8"
         onClick={nextStep}
       >
         Next Step

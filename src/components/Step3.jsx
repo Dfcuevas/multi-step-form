@@ -73,7 +73,7 @@ const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
           {addons.map((addon) => (
             <div
               key={addon.id}
-              className={`border-Light-gray border p-4 rounded-lg ${selectedIndex === addon.id && 'border-Marine-blue'}`}
+              className={`border-Light-gray border p-4 rounded-lg`}
               onClick={() => handleItemClick(addon.id)}
             >
               <label
@@ -107,15 +107,15 @@ const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
         </div>
       </section>
 
-      <div className="flex justify-between w-full">
+      <div className="w-full flex justify-between sm:pl-0 sm:pr-10 items-center">
         <button
-          className="m-4  p-2 text-Cool-gray hover:text-Marine-blue rounded-sm text-sm absolute sm:relative left-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-start sm:mr-8 sm:inline-block"
+          className="m-4  p-2 text-Cool-gray hover:text-Marine-blue rounded-sm text-sm absolute sm:relative left-0 -bottom-[4.5rem] sm:bottom-0 sm:pl-0 sm:py-3 sm:rounded-lg sm:self-start sm:m-0 sm:inline-block"
           onClick={prevStep}
         >
           Go Back
         </button>
         <button
-          className="m-4 bg-Marine-blue p-2 text-White rounded-sm text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-end sm:mr-8 sm:inline-block"
+          className="m-4 bg-Marine-blue p-2 text-White text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 rounded-md sm:self-end sm:m-0"
           onClick={nextStep}
         >
           Next Step

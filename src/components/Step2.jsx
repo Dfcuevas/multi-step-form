@@ -35,6 +35,8 @@ const planData = [
 ];
 
 const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
   const handleClick = (e) => {
     setChecked(e.target.checked);
   };
@@ -50,9 +52,13 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
     }));
   };
 
+  const handleItemClick = (index) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <div className=" sm:flex sm:flex-col sm:justify-around sm:items-baseline">
-      <section className="m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0">
+      <section className="m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0 ">
         <h1 className="font-bold text-2xl text-Marine-blue mb-3">
           Select your plan
         </h1>
@@ -63,8 +69,11 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
           {planData.map((data) => (
             <button
               key={data.id}
-              className="border border-Light-gray flex p-4 rounded-lg gap-3 items-start"
+              className={`border border-Light-gray flex p-4 rounded-lg gap-3 items-start ${
+                selectedIndex === data.id && "border-Marine-blue bg-Magnolia"
+              }`}
               onClick={() => handleData(data)}
+              onClickCapture={() => handleItemClick(data.id)}
             >
               <img src={data.icon} alt={data.name} />
               <div className={`flex flex-col items-start`}>
@@ -88,15 +97,15 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
           <span className={`${checked && "text-Cool-gray"}`}>Yearly</span>
         </div>
       </section>
-      <div className="flex justify-between w-full">
+      <div className="w-full flex justify-between sm:pl-0 sm:pr-10 items-center">
         <button
-          className="m-4  p-2 text-Cool-gray hover:text-Marine-blue rounded-sm text-sm absolute sm:relative left-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-start sm:mr-8 sm:inline-block"
+          className="m-4  p-2 text-Cool-gray hover:text-Marine-blue rounded-sm text-sm absolute sm:relative left-0 -bottom-[4.5rem] sm:bottom-0 sm:pl-0 sm:py-3 sm:rounded-lg sm:self-start sm:m-0 sm:inline-block"
           onClick={prevStep}
         >
           Go Back
         </button>
         <button
-          className="m-4 bg-Marine-blue p-2 text-White rounded-sm text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 sm:rounded-lg sm:self-end sm:mr-8 sm:inline-block"
+          className="m-4 bg-Marine-blue p-2 text-White  text-sm absolute sm:relative right-0 -bottom-[4.5rem] sm:bottom-0 sm:px-6 sm:py-3 rounded-md sm:self-end sm:m-0"
           onClick={nextStep}
         >
           Next Step

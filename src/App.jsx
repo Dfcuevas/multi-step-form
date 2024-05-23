@@ -5,6 +5,7 @@ import Step1 from "./components/Step1";
 import StepSumary from "./components/StepSumary";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
+import Step4 from "./components/Step4";
 
 const dataArray = [
   {
@@ -59,8 +60,6 @@ function App() {
     }));
   };
 
-  console.log(formData);
-
   return (
     <>
       <Container>
@@ -85,6 +84,15 @@ function App() {
         )}
         {step === 3 && (
           <Step3
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            formData={formData}
+            checked={checked}
+          />
+        )}
+        {step === 4 && (
+          <Step4
             setFormData={setFormData}
             nextStep={nextStep}
             prevStep={prevStep}
