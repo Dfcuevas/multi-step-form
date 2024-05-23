@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-const Step4 = ({ checked, nextStep, prevStep, formData }) => {
-  console.log(formData);
+const Step4 = ({ checked, nextStep, prevStep, formData, setStep }) => {
   return (
     <div className=" sm:flex sm:flex-col sm:justify-around sm:items-baseline">
       <section className="m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0">
@@ -10,32 +9,44 @@ const Step4 = ({ checked, nextStep, prevStep, formData }) => {
         <p className="text-Cool-gray text-lg mb-4">
           Double-check everything looks OK before confirming.
         </p>
+
         <div>
-          <div className="bg-Magnolia p-4">
-            <div className="border-b">
-              <div>
-                <p>
+          <div className="bg-Alabaster p-4 rounded-lg">
+            <div className="border-b border-Light-gray flex justify-between items-center">
+              <div className="flex flex-col pb-4 ">
+                <p className="text-Marine-blue font-semibold">
                   {formData.plan.planType}({formData.plan.duration})
-                  <span className="underline">Change</span>
                 </p>
+                <span
+                  className="underline text-Cool-gray cursor-pointer hover:text-Purplish-blue"
+                  onClick={setStep}
+                >
+                  Change
+                </span>
               </div>
-              <span>{formData.plan.price}</span>
+              <span className="text-Marine-blue font-semibold">
+                {formData.plan.price}
+              </span>
             </div>
             <div>
               {formData.addons.map((item) => (
                 <div
-                  className="flex justify-between items-center"
+                  className="flex justify-between items-center py-4"
                   key={item.service}
                 >
-                  <span>{item.service}</span>
-                  <span>{item.price}</span>
+                  <span className="text-Cool-gray">{item.service}</span>
+                  <span className="text-Marine-blue">{item.price}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div>
-            <p>{checked ? "(per year)" : "(per month)"}</p>
-            <span>+$12/{checked ? "yr" : "mo"}</span>
+          <div className="px-4 pt-8 pb-4 flex justify-between">
+            <p className="text-Cool-gray">
+              Total {checked ? "(per year)" : "(per month)"}
+            </p>
+            <span className="text-Purplish-blue font-semibold">
+              +$12/{checked ? "yr" : "mo"}
+            </span>
           </div>
         </div>
       </section>

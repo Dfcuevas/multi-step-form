@@ -65,18 +65,18 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
         <p className="text-Cool-gray text-lg mb-4">
           You have the option of monthly or yearly billing.
         </p>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           {planData.map((data) => (
             <button
               key={data.id}
-              className={`border border-Light-gray flex p-4 rounded-lg gap-3 items-start ${
-                selectedIndex === data.id && "border-Marine-blue bg-Magnolia"
-              }`}
+              className={`border border-Light-gray flex md:flex-col md:flex-1 p-4 rounded-lg gap-3 items-start ${
+                selectedIndex === data.id && "border-Marine-blue bg-Magnolia "
+              } hover:border-Marine-blue`}
               onClick={() => handleData(data)}
               onClickCapture={() => handleItemClick(data.id)}
             >
               <img src={data.icon} alt={data.name} />
-              <div className={`flex flex-col items-start`}>
+              <div className={`flex flex-col items-start sm:pt-4`}>
                 <p className="text-Marine-blue font-bold">{data.name}</p>
                 <span className="text-Cool-gray">
                   {checked ? data.price.yearly : data.price.monthly}
@@ -88,7 +88,7 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
             </button>
           ))}
         </div>
-        <div className="flex gap-4 items-center justify-center mt-10 pb-6">
+        <div className="flex gap-4 items-center justify-center mt-4 py-6 bg-Magnolia">
           <span className={`${!checked && "text-Cool-gray"}`}>Monthly</span>
           <label className="switch">
             <input type="checkbox" onClick={handleClick} />

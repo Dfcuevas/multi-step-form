@@ -1,8 +1,5 @@
-import { useState } from "react";
-
 /* eslint-disable react/prop-types */
 const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
-  const [selectedIndex, setSelectedIndex] = useState(null);
   const addons = [
     {
       id: 1,
@@ -56,10 +53,6 @@ const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
     }
   };
 
-  const handleItemClick = (index) => {
-    setSelectedIndex(index);
-  };
-
   return (
     <div className=" sm:flex sm:flex-col sm:justify-around sm:items-baseline">
       <section className="m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0">
@@ -73,13 +66,12 @@ const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
           {addons.map((addon) => (
             <div
               key={addon.id}
-              className={`border-Light-gray border p-4 rounded-lg`}
-              onClick={() => handleItemClick(addon.id)}
+              className={`border-Light-gray border p-4 rounded-lg hover:border-Marine-blue hover:cursor-pointer`}
             >
               <label
                 onClick={() => test(addon)}
                 htmlFor={addon.service}
-                className="flex gap-2 items-center justify-between"
+                className="flex gap-2 items-center justify-between hover:cursor-pointer"
               >
                 <div className="flex gap-4 items-center">
                   <input

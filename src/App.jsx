@@ -6,6 +6,7 @@ import StepSumary from "./components/StepSumary";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
+import Step5 from "./components/Step5";
 
 const dataArray = [
   {
@@ -60,6 +61,13 @@ function App() {
     }));
   };
 
+  const stepChange = () => {
+    setStep(2);
+    setFormData((prevState) => ({
+      ...prevState,
+      addons: [],
+    }));
+  };
   return (
     <>
       <Container>
@@ -98,6 +106,17 @@ function App() {
             prevStep={prevStep}
             formData={formData}
             checked={checked}
+            setStep={stepChange}
+          />
+        )}
+        {step === 5 && (
+          <Step5
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            formData={formData}
+            checked={checked}
+            setStep={stepChange}
           />
         )}
       </Container>
