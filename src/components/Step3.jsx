@@ -40,7 +40,9 @@ const Step3 = ({ prevStep, nextStep, setFormData, formData, checked }) => {
           ...prevData.addons,
           {
             service: addon.service,
-            price: checked ? addon.price.yearly : addon.price.monthly,
+            price: checked
+              ? Number(addon.price.yearly.match(/\d+/)[0])
+              : Number(addon.price.monthly.match(/\d+/)[0]),
             checked: inputChecked,
           },
         ],

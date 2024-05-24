@@ -47,7 +47,9 @@ const Step2 = ({ nextStep, prevStep, setFormData, checked, setChecked }) => {
       plan: {
         duration: checked ? "Yearly" : "Monthly",
         planType: data.name,
-        price: checked ? data.price.yearly : data.price.monthly,
+        price: checked
+          ? Number(data.price.yearly.match(/\d+/)[0])
+          : Number(data.price.monthly.match(/\d+/)[0]),
       },
     }));
   };

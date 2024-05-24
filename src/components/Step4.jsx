@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
 const Step4 = ({ checked, nextStep, prevStep, formData, setStep }) => {
+  let totalPrice =
+    formData.addons.reduce((acum, current) => {
+      return acum + current.price;
+    }, 0) + formData.plan.price;
+
   return (
     <div className=" sm:flex sm:flex-col sm:justify-around sm:items-baseline">
       <section className="m-4 bg-White px-4 py-6 rounded-lg relative -top-[5.5rem] sm:top-0">
@@ -25,7 +30,9 @@ const Step4 = ({ checked, nextStep, prevStep, formData, setStep }) => {
                 </span>
               </div>
               <span className="text-Marine-blue font-semibold">
-                {formData.plan.price}
+                {checked
+                  ? `$${formData.plan.price}/yr`
+                  : `$${formData.plan.price}/mo`}
               </span>
             </div>
             <div>
@@ -35,7 +42,9 @@ const Step4 = ({ checked, nextStep, prevStep, formData, setStep }) => {
                   key={item.service}
                 >
                   <span className="text-Cool-gray">{item.service}</span>
-                  <span className="text-Marine-blue">{item.price}</span>
+                  <span className="text-Marine-blue">
+                    {checked ? `$${item.price}/yr` : `$${item.price}/mo`}
+                  </span>
                 </div>
               ))}
             </div>
@@ -45,7 +54,7 @@ const Step4 = ({ checked, nextStep, prevStep, formData, setStep }) => {
               Total {checked ? "(per year)" : "(per month)"}
             </p>
             <span className="text-Purplish-blue font-semibold">
-              +$12/{checked ? "yr" : "mo"}
+              {checked ? `$${totalPrice}/yr` : `$${totalPrice}/mo`}
             </span>
           </div>
         </div>

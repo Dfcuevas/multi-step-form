@@ -68,6 +68,8 @@ function App() {
       addons: [],
     }));
   };
+
+  console.log(formData);
   return (
     <>
       <Container>

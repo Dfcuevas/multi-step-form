@@ -21,6 +21,7 @@ const Step1 = ({ formData, nextStep, handleChange }) => {
               placeholder="e.g. Stephen King"
               value={formData.name}
               onChange={handleChange}
+              required
             />
           </label>
         </div>
@@ -35,6 +36,7 @@ const Step1 = ({ formData, nextStep, handleChange }) => {
               placeholder="e.g. stephenking@lorem.com"
               value={formData.email}
               onChange={handleChange}
+              required
             />
           </label>
         </div>
@@ -49,6 +51,7 @@ const Step1 = ({ formData, nextStep, handleChange }) => {
               placeholder="e.g. +1234567890"
               value={formData.phone}
               onChange={handleChange}
+              required
             />
           </label>
         </div>
